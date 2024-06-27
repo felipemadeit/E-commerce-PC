@@ -29,9 +29,9 @@
     </div>
 
     <div class="container-info">
-            {% if product.product_stock > 0 %}
+            {% if product.stock > 0 %}
                 <span style="color: green;"> &#x2713; Stock</span> 
-            {% elif product.product_stock <= 0 %}
+            {% elif product.stock <= 0 %}
                 <span style="color: red;"> &#x0058; Stock</span>
             {% endif %}
             <span style="color: green;"> &#x2713; Free Shipping</span>
@@ -53,7 +53,24 @@
         <span>{{product.get_format_price}}</span>
     </div>
 
-    <a href="#" class="btn-add">Add to cart</a>
+    <div class="btn-add">
+        <h2>Add to cart</h2>
+        <img src="{% static 'media/icons-svg/shopping-cart.svg' %}" class="svg-cart">
+    </div>
+
+    <div class="modal-confirm">
+        <div class="content-modal">
+            <h2 class="modal-message">Add <span class="quantity-placeholder"> This message will be replaced </span> products to cart ?</h2>
+            <div class="btn-confirm">Confirm</div>
+            <div class="btn-cancel">Cancel</div>
+        </div>
+    </div>
+
+    <div class="notification-success">
+        <h2>Your products were added correctly</h2>
+        <img class="svg-success" src="{% static 'media/icons-svg/success.svg' %}">
+    </div>
+
 
    
 

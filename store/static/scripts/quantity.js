@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const decrementBtn = document.getElementById('decrement');
     const incrementBtn = document.getElementById('increment');
     const quantityInput = document.getElementById('quantity');
+    
+
 
     decrementBtn.addEventListener('click', function() {
         decreaseQuantity();
@@ -49,4 +51,43 @@ document.addEventListener('DOMContentLoaded', function() {
             quantityInput.value = currentValue + 1;
         }
     }
+
+    // Function to buy
+    const buttonAdd = document.querySelector('.btn-add');
+    const buttonConfirm = document.querySelector('.btn-confirm');
+    const buttonCancel = document.querySelector('.btn-cancel')
+    const modalConfirm = document.querySelector('.modal-confirm')
+    // Div to confirm quantity
+    const quantityPlaceholder = document.querySelector('.quantity-placeholder');
+    const notificationSuccess = document.querySelector('.notification-success');
+
+    function addCart () {
+        modalConfirm.style.display = 'flex';
+        quantityPlaceholder.textContent = quantityInput.value
+
+
+    };
+
+    buttonAdd.addEventListener("click", function() {
+        addCart();
+    });
+
+    buttonCancel.addEventListener("click", function() {
+        modalConfirm.style.display = 'none';
+    })
+
+    buttonConfirm.addEventListener("click", function() {
+
+        notificationSuccess.classList.add('visible');
+        modalConfirm.style.display = 'none';
+
+        setTimeout(function(){
+            notificationSuccess.classList.remove('visible')
+
+
+       },2000)
+    })
+
 });
+
+

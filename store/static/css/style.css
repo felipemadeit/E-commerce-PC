@@ -381,6 +381,97 @@ a {
     
 }
 
+.social-links  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 800px;
+    gap: 2rem;
+
+}
+
+.icon {
+    z-index: 3;
+    text-decoration: none;
+    width: 5.625rem;
+    height: 5.625rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .icon {
+    text-decoration: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 14px;
+    background-color:#0c1821 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  }
+  
+  .icon > i {
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.2s;
+  }
+  
+  .icon:hover > i {
+    scale: 1.2;
+    color: #f1f1f1;
+  }
+  
+  .icon:before {
+    background: var(--color);
+    content: "";
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    left: -110%;
+    top: 80%;
+    transform: rotate(45deg);
+  }
+  
+  .icon:hover:before {
+    animation: slide 0.7s forwards;
+  }
+  
+  @keyframes slide {
+    50% {
+      left: 10%;
+      top: -40%;
+    }
+  
+    100% {
+      left: -15%;
+      top: -15%;
+    }
+  }
+  
+  .icon:has(.fa-instagram) {
+    --color: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+  }
+  .icon:has(.fa-linkedin-in) {
+    --color: #0077b5;
+  }
+  .icon:has(.fa-youtube) {
+    --color: #ff0000;
+  }
+  .icon:has(.fa-x-twitter) {
+    --color: #1da1f2;
+  }
+  .icon:has(.fa-github) {
+    --color: #333;
+  }
 .container-creator {
     position: absolute;
     font-size: 20px;
@@ -641,6 +732,7 @@ input[type="password"] {
     margin-top: 5px;
     margin-right: 6px;
     border-radius: 15px;
+    border:1px solid white;
     padding-top: 20px;
     box-sizing: border-box;
     position: relative; 
@@ -901,7 +993,8 @@ input[type="password"] {
 
 .container-info span {
     font-weight: lighter;
-    margin-bottom: 10px;
+    margin-top: -15px;
+    margin-bottom: 20px;
     margin-left: 30px;
     font-size: 25px;
 
@@ -913,17 +1006,20 @@ input[type="password"] {
     width: 200px;
     height: 50px;
     top: 480px;
-    left: 750px;
+    left: 970px;
     align-items: center;
+    gap: 5px;
 }
 
 .quantity-selector input{
     display: flex;
     text-align: center;
-    border: 2px solid #0d1b2a;
+    border: 2px solid #0c1821;
     border-radius: 10px;
     width: 60px;
     height: 35px;
+    background-color: #0c1821;
+    color: white;
 }
 
 .quantity-selector input::-webkit-outer-spin-button,
@@ -933,55 +1029,59 @@ input[type="password"] {
 }
 
 .quantity-selector button {
+    display: flex;
     width: 40px;
     height: 40px;
     border: 2px solid gray;
     border-radius:5px ;
     cursor: pointer;
-    color: black;
+    color: white;
+    background-color: #0c1821;
+    font-size: 20px;
+    line-height: 32px;
+    justify-content: center;
 }
 
 .price-product {
     display: flex;
     position: absolute;
-    top: 280px;
+    top: 285px;
     left: 750px; 
 }
 
 .price-product span {
-    font-size: 35px;
+    font-size: 30px;
     color: white;
 }
 
 .btn-add  {
     display: flex;
     position: absolute;
+    cursor: pointer;
     top: 485px;
-    left: 950px;
+    left: 750px;
     color: white;
     text-decoration: none;
-    background-color: #2b2d42;
-    width: 100px;
+    background-color: #0c1821;
+    width: 150px;
     height: 40px;
-    border: 1px solid #000000;
     border-radius: 10px;
     align-items: center;
-    justify-content: center;
+    vertical-align: middle;
+    gap: 5px;
+    padding: 1px 14px;
+    box-sizing: border-box;
+}
+
+.svg-cart {
+    display: inline-block;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
 
-.social-links  {
-    display: flex;
-    margin-top: 35px;
-    margin-left: 850px;
-    gap: 20px;
 
-}
 
-.social-links i {
-    font-size: 30px;
-    color:  white;
-}
+
 
 
 .tags {
@@ -1155,19 +1255,21 @@ input[type="password"] {
     line-height: 30px;
     border-radius: 20px;
     text-align: center;
-    color: white; 
+    color: white;
+    font-size: 18px; 
  }
 
 
 .component-card { 
     flex: 0 0 auto;
     background-color: #edf2f4;
-    background: linear-gradient(to bottom, #586475 60%, #0c1821 40%);
+    background: linear-gradient(to bottom,#1b263b 60%, #0c1821 40%);
     width: 240px; 
     height: 370px; 
     margin-top: 5px;
     margin-right: 6px;
     border-radius: 20px;
+    border: 1px solid white;
     padding-top: 20px;
     box-sizing: border-box;
     position: relative; 
@@ -1426,4 +1528,92 @@ input[type="password"] {
     
 }
 
+
+.modal-confirm {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(10px);
+
+}
+
+.content-modal {
+    width: 600px;
+    height: 300px;
+    padding: 70px 100px ;
+    box-sizing: border-box;
+    background-color: #0c1821;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 50px;
+}
+
+.content-modal h2 {
+    display: inline-block;
+    font-size: 35px;
+    color: white;
+}
+
+.btn-confirm {
+    margin-top: 40px;
+    margin-left: 130px;
+    border-radius: 20px;
+    background-color:#1b263b ;
+    width: 150px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    margin-top: 20px;
+    margin-left: 130px;
+    border-radius: 20px;
+    background-color:#1b263b ;
+    width: 150px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-confirm:hover,
+.btn-cancel:hover {
+    transform: scale(1.1);
+}
+
+.notification-success {
+    display: flex;
+    position: fixed;
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    top: -100px;
+    left: 500px;
+    width: 380px;
+    height: 70px;
+    justify-content: center;
+    padding-bottom: 5px;
+    overflow: auto;
+    text-align: center;
+    box-sizing: border-box;    
+    background-color:#0c1821 ;
+    border-radius: 50px;
+    color: white;
+    gap: 10px;
+    transition: top 0.5s ease-in-out; 
+
+}
+
+.notification-success.visible {
+    top: 100px; 
+}
+
+.svg-success {  
+    filter: brightness(0) saturate(100%) invert(36%) sepia(90%) saturate(746%) hue-rotate(100deg) brightness(92%) contrast(89%);
+}
 

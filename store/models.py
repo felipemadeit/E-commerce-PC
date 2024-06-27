@@ -20,6 +20,7 @@ class Product(models.Model):
     description = models.TextField(default="None")
     primary_img = models.ImageField(upload_to='store/static/media/products', default=None)
     second_img = models.ImageField(upload_to='store/static/media/products',default=None)
+    stock = models.IntegerField(default=100)
 
     def get_format_price(self):
         return "${:,.0f}".format(self.price)
