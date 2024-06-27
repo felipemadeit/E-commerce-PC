@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #0c151d;
+    background-color: #1b263b;
     overflow-x: hidden;
 }
 
@@ -27,7 +27,7 @@ header {
 .nav-bar {
     display: flex;
     justify-content: space-between;
-    background-color: #171f26;
+    background-color: #0c1821;
     width: 100%;
     height: 80px;
     align-items: center;
@@ -155,7 +155,7 @@ header {
 
 
 .product-card:hover {
-    background-color: #161d24; /* Color del div al pasar el ratón sobre él */
+    background-color: #0c1821; 
 }
 
 a {
@@ -377,7 +377,7 @@ a {
     width: 100%;
     margin-top: 200px;
     height: 100px;
-    background-color: #171f26;
+    background-color: #0c1821;
     
 }
 
@@ -561,7 +561,7 @@ input[type="password"] {
     position: absolute;
     z-index: 99999999;
     cursor: pointer;
-    background-color: #171f26;
+    background-color: #0c1821;
     margin-top: 130px;
     margin-left: 24px;
     width: 40px; 
@@ -588,7 +588,7 @@ input[type="password"] {
     border-radius: 50%;
     z-index: 99999999;
     cursor: pointer;
-    background-color: #171f26;
+    background-color: #0c1821;
     transition: opacity 0.5s ease;
     opacity: 0;
     visibility: hidden;
@@ -635,18 +635,17 @@ input[type="password"] {
 
 .card_product {
     flex: 0 0 auto;
-    background-color: #edf2f4;
-    background: linear-gradient(to bottom, #0c151d 60%, #171f26 40%);
+    background: linear-gradient(to bottom,#1b263b 60%, #0c1821 40%);
     width: 240px; 
     height: 370px; 
     margin-top: 5px;
     margin-right: 6px;
-    border-radius: 20px;
-    border: 2px solid #171f26;
+    border-radius: 15px;
     padding-top: 20px;
     box-sizing: border-box;
     position: relative; 
 }
+
 
 
 .card_product a {
@@ -661,7 +660,12 @@ input[type="password"] {
     display: block;
     top: 30%;
     bottom: 10px;
-    transform: translateY(-50%) scale(0.9); 
+    transform: translateY(-50%) scale(0.8); 
+    transition: transform 0.3s ease;
+}
+
+.card_product:hover img {
+    transform: translateY(-50%) scale(0.9);
 }
 
 .card_product h2 {
@@ -684,7 +688,6 @@ input[type="password"] {
    height: 30px;
    line-height: 30px;
    border-radius: 20px;
-   background-color: #171f26;
    text-align: center;
    color: black; 
 }
@@ -715,7 +718,7 @@ input[type="password"] {
     height: 30px;
     cursor: pointer;
     border-radius: 20px;
-    background-color: #2b2d42;
+    background-color: #0c1821;
     margin-top: 100px;
     margin-left: 1080px;
     justify-content: center;
@@ -740,7 +743,7 @@ input[type="password"] {
 .line-separator {
     display: flex;
     margin-top: 90px;
-    background-color: #212b33;
+    background-color: #0c1821;
     margin-left: 65px;
     width: 1230px;
     height: 2px;
@@ -866,7 +869,7 @@ input[type="password"] {
 }
 
 .carousel-item img {
-    transform: scale(0.5);
+    transform: scale(0.7);
 }
 
 .container-product-description {
@@ -1151,7 +1154,6 @@ input[type="password"] {
     height: 30px;
     line-height: 30px;
     border-radius: 20px;
-    background-color: #171f26;
     text-align: center;
     color: white; 
  }
@@ -1160,13 +1162,12 @@ input[type="password"] {
 .component-card { 
     flex: 0 0 auto;
     background-color: #edf2f4;
-    background: linear-gradient(to bottom, #0c151d 60%, #171f26 40%);
+    background: linear-gradient(to bottom, #586475 60%, #0c1821 40%);
     width: 240px; 
     height: 370px; 
     margin-top: 5px;
     margin-right: 6px;
     border-radius: 20px;
-    border: 2px solid #171f26;
     padding-top: 20px;
     box-sizing: border-box;
     position: relative; 
@@ -1185,7 +1186,12 @@ input[type="password"] {
     display: block;
     top: 30%;
     bottom: 10px;
-    transform: translateY(-50%) scale(0.9); 
+    transform: translateY(-50%) scale(0.8); 
+    transition: transform 0.3s ease; 
+}
+
+.component-card:hover img {
+    transform: translateY(-50%) scale(0.9);
 }
 
 .component-card h2{
@@ -1299,7 +1305,7 @@ input[type="password"] {
     height: 30px;
     cursor: pointer;
     border-radius: 20px;
-    background-color: #2b2d42;
+    background-color: #0c1821;
     margin-top: 150px;
     margin-left: 1080px;
     justify-content: center;
@@ -1319,7 +1325,7 @@ input[type="password"] {
     height: 30px;
     cursor: pointer;
     border-radius: 20px;
-    background-color: #2b2d42;
+    background-color: #0c1821;
     margin-top: 150px;
     margin-left: 1080px;
     justify-content: center;
@@ -1337,7 +1343,7 @@ input[type="password"] {
     height: 30px;
     cursor: pointer;
     border-radius: 20px;
-    background-color: #171f26;
+    background-color: #0c1821;
     margin-top: 150px;
     margin-left: 1070px;
     justify-content: center;
