@@ -1,0 +1,199 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+{% block body %}
+    <div class="slogan-div">
+        <img class="slogan-img" src="{% static 'media/brand/letras.png' %}">
+    </div>
+    <div class="container-cards">
+        <div class="product-card">
+            <a href="{% url 'components' %}"><img class="products-img" src="{% static 'media/brand/compnts.png' %}"></a>            
+        </div>
+        <span class="components-span">Components</span>
+        <div class="product-card">
+            <a href="{% url 'prebuilds' %}"><img class="prebuild-img" src="{% static 'media/brand/prebuild.png' %}"></a>
+        </div>
+        <span class="prebuild-span">Prebuilds</span>
+        <div class="product-card">
+            <a href="{% url 'laptops' %}"><img class="laptops-img" src="{% static 'media/brand/alp.png' %}"></a>
+        </div>
+        <span class="laptop-span">Laptops</span>
+    </div>
+
+    <!--Div for brands-->
+    <div class="container-brands">
+        <div class="container-cards-brands">
+            <div class="container-img-brand"><img class="intel-img" src="{% static 'media/logos-brand/intel.png' %}" alt="intel-logo"></div>
+            <div class="container-img-brand"><img class="asus-img" src="{% static 'media/logos-brand/asus.png' %}" alt="asus-logo"></div>
+            <div class="container-img-brand"><img class="msi-img" src="{% static 'media/logos-brand/msi-.png' %}" alt="msi-logo"></div>            <div class="container-img-brand"><img class="corsair-img" src="{% static 'media/logos-brand/corsair.png' %}" alt="corsair-logo"></div>
+            <div class="container-img-brand"><img class="redragon-img" src="{% static 'media/logos-brand/redragon.png' %}" alt="redragon-logo"></div>
+        </div>
+    </div>
+
+    <!--Button for the all processors view-->
+
+    <div class="show-all-processors">
+        <a href="{% url 'processors' %}">View All Processors</a>
+    </div>
+
+    <!--Text to the best selling processors section-->
+
+    <div class="text-processors">
+            <h2>BEST SELLING PROCESSORS</h2>
+        </div>
+
+    <!--Section to the processors carousel-->
+
+    <div class="show_products processors">
+        <div class="arrow-next"><span>&#x2192;</span></div>
+        <div class="arrow-prev"><span>&#x2190;</span></div>
+
+            <div class="product-carousel processors">
+                <div class="cards-container processors">
+                    {% for processor in processors|slice:":10" %}
+                        <div class="card_product processors">        
+                            <a href="{% url 'product' processor.id %}">
+                                <img src="{{ processor.primary_img.url }}">
+                                <h2>{{ processor.name }}</h2>
+                                <span class="product-price">{{ processor.get_format_price }}</span>
+                            </a>
+                            <span class="span-stock"> &#x2713; Stock</span> 
+                            <a class="add-cart" href="#">Add to cart</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    
+
+    <!--This div separates the carousels -->
+
+    <div class="line-separator"></div>
+
+    <!--This button is for the all graphics card view-->
+
+    <div class="show-all-cards">
+        <a href="{% url 'graphics' %}">View All Graphics Cards</a>
+    </div>
+
+    <!--Text to the best selling cards section-->
+
+    <div class="text-cards">
+        <h2>BEST SELLING GRAPHICS CARDS</h2>
+    </div>
+
+    <!--Carousel for the best selling cards graphics-->
+
+    <div class="show_products graphics">
+    <div class="arrow-next"><span>&#x2192;</span></div>
+    <div class="arrow-prev"><span>&#x2190;</span></div>
+
+        <div class="product-carousel graphics">
+            <div class="cards-container graphics">
+                {% for card in cards|slice:":10" %}
+                    <div class="card_product graphics">
+                        <a href="{% url 'product' card.id %}">
+                            <img src="{{card.primary_img.url}}">
+                            <h2>{{card.name}}</h2> 
+                            <span class="product-price">{{card.get_format_price}}</span>
+                        </a>
+                        <span class="span-stock"> &#x2713; Stock</span> 
+                        <a class="add-cart" href="#">Add to cart</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <!--Div for separate the carousels-->
+
+    <div class="line-separator"></div>
+
+
+    <!--Button for all laptops view-->
+
+    <div class="show-all-laptops">
+        <a href="{% url 'laptops' %}">View All Laptops</a>
+    </div>
+
+    <!--Text for best selling laptops section-->
+
+    <div class="text-laptops">
+        <h2>BEST SELLING LAPTOPS</h2>
+    </div>
+
+    <div class="show_products laptops">
+        <div class="arrow-next"><span>&#x2192;</span></div>
+        <div class="arrow-prev"><span>&#x2190;</span></div>
+        <div class="product-carousel laptops">
+            <div class="cards-container laptops">
+                {% for laptop in laptops|slice:":10" %}
+                    <div class="card_product laptops">
+                        <a href="{% url 'product' laptop.id %}">
+                            <img src="{{laptop.primary_img.url}}">
+                            <h2>{{laptop.name}}</h2>
+                            <span class="product-price">{{laptop.get_format_price}}</span>
+                        </a>
+                        <span class="span-stock"> &#x2713; Stock</span> 
+                        <a class="add-cart" href="#">Add to cart</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="line-separator"></div>   
+
+    <div class="show-all-keyboards">
+        <a href="{% url 'keyboards' %}">View All Keyboards</a>
+    </div>   
+
+    <div class="text-keyboards">
+        <h2>BEST SELLING KEYBOARDS</h2>
+    </div>
+
+    <div class="show_products keyboards">
+        <div class="arrow-next"><span>&#x2192;</span></div>
+        <div class="arrow-prev"><span>&#x2190;</span></div>
+        <div class="product-carousel keyboards">
+            <div class="cards-container keyboards">
+                {% for keyboard in keyboards|slice:":10" %}
+                    <div class="card_product keyboards">
+                        <a href="{% url 'product' keyboard.id %}">
+                            <img src="{{keyboard.primary_img.url}}">
+                            <h2>{{keyboard.name}}</h2>
+                            <span class="product-price">{{keyboard.get_format_price}}</span>
+                        </a> 
+                        <span class="span-stock"> &#x2713; Stock</span> 
+                        <a class="add-cart" href="#">Adffd to cart</a>   
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="pre_builds">
+        <img src="{% static 'media/img-expert.png' %}">
+        <div class="container-h1"><h1>Stressed out by not<br>knowing what<br>components to use?</h1></div>
+        <a href="#" class="button-prebuilds "></a>
+    </div>-->   
+
+    <div class="footer">
+        <div class="container-creator">Created by FelipeMadeIt</div>
+        <div class="line"></div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/horizontalScroll.js' %}"></script>
+{% endblock %}

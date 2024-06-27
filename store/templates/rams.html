@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    Ram
+{% endblock %}
+
+{% block body %}
+
+    {% include 'layouts/layoutComponentsRam.html' %}
+
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'scripts/toggleFunction.js' %}"></script>
+{% endblock %}

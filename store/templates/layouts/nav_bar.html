@@ -1,0 +1,33 @@
+{% load static %}
+
+<header>
+    <nav class="nav-bar">
+    <a href="{% url 'home' %}" alt="" class="logo">
+        <img class="logo-nav" src ="{% static 'media/brand/logo-nav.png' %}" alt="logo navbar">
+    </a>
+
+    <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    <!--    
+    <div class="search">
+        <div class="btn-search">
+            <i class="fas fa-search"></i>
+        </div> 
+        <input type="text" placeholder="Search" requiered>
+    </div>
+    -->
+        <ul class="list-nav">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'components' %}">Store</a></li>
+            <li><a href="#">Contact</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                <li><i class="fas fa-shopping-cart shopping-cart-icon"></i></a>
+            {% else %}
+                <li><a href="{% url 'login' %}">Log in</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+</header>

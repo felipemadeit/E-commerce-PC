@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    HeadPhones
+{% endblock %}
+
+{% block body %}
+    {% include 'layouts/layoutComponentsHeadphones.html' %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/toggleFunction.js' %}"></script>
+{% endblock %}

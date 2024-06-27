@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    Keyboards
+{% endblock %}
+
+{% block body %}
+
+    {% include 'layouts/layoutComponentsKeyboards.html' %}
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/toggleFunction.js' %}"></script>
+{% endblock %}

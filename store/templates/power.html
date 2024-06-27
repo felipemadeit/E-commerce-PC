@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    Power Supply
+{% endblock %}
+
+{% block body %}
+    {% include 'layouts/layoutComponentsPower.html' %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/toggleFunction.js' %}"></script>
+{% endblock %}

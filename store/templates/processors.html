@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    Processors
+{% endblock %}
+
+{% block body %}
+
+    {% include 'layouts/layoutComponentsProcessors.html' %}
+    
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/toggleFunction.js' %}"></script>
+{% endblock %}

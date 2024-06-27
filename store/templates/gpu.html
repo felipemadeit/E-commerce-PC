@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    GPU
+{% endblock %}
+
+{% block body %}
+    {% include 'layouts/layoutComponentsCards.html' %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/toggleFunction.js' %}"></script>
+{% endblock %}
