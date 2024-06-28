@@ -1546,7 +1546,7 @@ input[type="password"] {
 
 .content-modal {
     width: 600px;
-    height: 300px;
+    height:400px;
     padding: 70px 100px ;
     box-sizing: border-box;
     background-color: #0c1821;
@@ -1555,30 +1555,40 @@ input[type="password"] {
     border-radius: 50px;
 }
 
-.content-modal h2 {
-    display: inline-block;
-    font-size: 35px;
-    color: white;
-}
 
 .btn-confirm {
-    margin-top: 40px;
+    display: inline-block;
+    margin-top: 30px;
     margin-left: 130px;
     border-radius: 20px;
-    background-color:#1b263b ;
-    width: 150px;
-    color: white;
+    background-color:green ;
+    padding-top: 3px;
+    box-sizing: border-box;
+    width: 50px;
     cursor: pointer;
+}
+
+.btn-confirm img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+
 }
 
 .btn-cancel {
+    display: inline-block;
     margin-top: 20px;
-    margin-left: 130px;
+    margin-left: 15px;
     border-radius: 20px;
-    background-color:#1b263b ;
-    width: 150px;
+    background-color:red;
+    width: 50px;
     color: white;
     cursor: pointer;
+    padding-top: 3px;
+    box-sizing: border-box;
+}
+
+.btn-cancel img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+
 }
 
 .btn-confirm:hover,
@@ -1617,3 +1627,96 @@ input[type="password"] {
     filter: brightness(0) saturate(100%) invert(36%) sepia(90%) saturate(746%) hue-rotate(100deg) brightness(92%) contrast(89%);
 }
 
+.text-add {
+    position: absolute;
+    margin-top: 240px;
+    margin-left: 18px;
+    color: white;
+    gap: 20px;
+}
+
+.preview-added {
+    display: flex;
+    position: absolute;
+    top: 200px;
+    left: 430px;
+    width: 500px;
+    height: 250px;  
+    color: white;
+}
+
+.preview-added img {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 65px;
+    width: 150px;
+    height: auto;
+}
+
+.preview-added h2 {
+    font-size: 18px;
+    top: 60px;
+    left: 290px;
+}
+
+
+.text-quantity {
+    display: flex;
+    margin-top: 105px;
+    margin-left: 250px;
+    font-size: 10px;
+
+}
+
+.modal-message {
+    position: relative;
+    top: 60px;
+    left: -60px;
+    font-size: 20px;
+}
+
+.text-cart {
+    position: relative;
+    top: -50px;
+    left: 5px;
+    font-size: 30px;
+    color: white;
+}
+
+.preview-name {
+    position: absolute;
+    max-width: 180px;
+    word-wrap: break-word;
+    top: 100px;
+    left: 230px;
+}
+
+.line {
+    position: absolute;
+    top: 170px;
+    left: -630px;
+    width: 390px;
+    height: 1px;
+    background-color: white;
+}
+
+.quantity-text {
+    position:absolute;
+    margin-top: 100px;
+    margin-left: 115px;
+}
+
+.span-total {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 70px;
+    font-size: 20px;
+}
+
+.total-price {
+    position: absolute;
+    font-size: 18px;
+    top: 200px;
+    left: 360px;
+
+}

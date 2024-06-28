@@ -58,12 +58,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttonCancel = document.querySelector('.btn-cancel')
     const modalConfirm = document.querySelector('.modal-confirm')
     // Div to confirm quantity
-    const quantityPlaceholder = document.querySelector('.quantity-placeholder');
+    const quantityPlaceholder = document.querySelectorAll('.quantity-placeholder');
     const notificationSuccess = document.querySelector('.notification-success');
+    
+
+    function formatPrice (amount) {
+        return amount.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+
+    } 
+
+    const unitPrice = document.querySelector('.total-price').textContent;
+
 
     function addCart () {
+        const totalPrice = unitPrice * parseFloat(quantityInput.value);
+        const formatedPrice = formatPrice(totalPrice);
         modalConfirm.style.display = 'flex';
-        quantityPlaceholder.textContent = quantityInput.value
+        document.querySelector('.total-price').textContent = formatedPrice;
+        quantityPlaceholder.forEach(quantityPlaceholder => {
+            quantityPlaceholder.textContent = quantityInput.value
+        })
 
 
     };
@@ -76,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
         modalConfirm.style.display = 'none';
     })
 
+    
+
     buttonConfirm.addEventListener("click", function() {
 
         notificationSuccess.classList.add('visible');
@@ -85,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             notificationSuccess.classList.remove('visible')
 
 
-       },2000)
+       }, 2500)
     })
 
 });

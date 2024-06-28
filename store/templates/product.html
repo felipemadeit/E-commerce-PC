@@ -60,18 +60,31 @@
 
     <div class="modal-confirm">
         <div class="content-modal">
-            <h2 class="modal-message">Add <span class="quantity-placeholder"> This message will be replaced </span> products to cart ?</h2>
-            <div class="btn-confirm">Confirm</div>
-            <div class="btn-cancel">Cancel</div>
+            <div class="text-add">
+                <div class="btn-confirm"><img src="{% static 'media/icons-svg/check.svg' %}"></div>
+                <div class="btn-cancel"><img src="{% static 'media/icons-svg/x.svg' %}"></div>
+            </div>
+            <h2 class="text-cart">Shopping Cart</h2>
+            <div class="preview-added">
+                <img src="{{ product.primary_img.url }}">
+                <div class="line"></div>
+                    <h2 class="quantity-text"><span class="quantity-placeholder">This message will be replaced </span>&nbsp; units</h2>
+                    <h2 class="preview-name">{{product.name}}</h2>
+                    <span class="span-total">Total : </span>
+                    <span class="total-price">{{product.price}}</span>
+            </div>
+            </div>
+            
         </div>
     </div>
 
     <div class="notification-success">
+        <div class="notification-text"></div>
         <h2>Your products were added correctly</h2>
         <img class="svg-success" src="{% static 'media/icons-svg/success.svg' %}">
     </div>
 
-
+</div>
    
 
 {% endblock %}
