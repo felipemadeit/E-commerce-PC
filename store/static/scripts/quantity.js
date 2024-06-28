@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.querySelector('.carousel-prev');
     const nextButton = document.querySelector('.carousel-next');
 
-    let index = 0;
+    if (track && items && prevButton && nextButton) {
+        let index = 0;
     const totalItems = items.length;
     const itemWidth = items[0].clientWidth;
 
@@ -23,34 +24,41 @@ document.addEventListener('DOMContentLoaded', function() {
         const translateX = -index * itemWidth;
         track.style.transform = `translateX(${translateX}px)`;
     }
+    };
+
+    
 
     const decrementBtn = document.getElementById('decrement');
     const incrementBtn = document.getElementById('increment');
     const quantityInput = document.getElementById('quantity');
+
+    if (decrementBtn && incrementBtn && quantityInput) {
+        decrementBtn.addEventListener('click', function() {
+            decreaseQuantity();
+        });
+    
+        incrementBtn.addEventListener('click', function() {
+            increaseQuantity();
+        });
+    
+        function decreaseQuantity() {
+            let currentValue = parseInt(quantityInput.value, 10);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+    
+        function increaseQuantity() {
+            let currentValue = parseInt(quantityInput.value, 10);
+            if (currentValue < 15) {
+                quantityInput.value = currentValue + 1;
+            }
+        }
+    }
     
 
 
-    decrementBtn.addEventListener('click', function() {
-        decreaseQuantity();
-    });
-
-    incrementBtn.addEventListener('click', function() {
-        increaseQuantity();
-    });
-
-    function decreaseQuantity() {
-        let currentValue = parseInt(quantityInput.value, 10);
-        if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        }
-    }
-
-    function increaseQuantity() {
-        let currentValue = parseInt(quantityInput.value, 10);
-        if (currentValue < 15) {
-            quantityInput.value = currentValue + 1;
-        }
-    }
+    
 
     // Function to buy
     const buttonAdd = document.querySelector('.btn-add');

@@ -11,6 +11,8 @@ from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from django.db.models.functions import Random
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -507,15 +509,12 @@ def sign_out (request):
 
 
 
-
+@login_required
 def product_view(request, product_id):
 
     product = get_object_or_404(Product, id=product_id)
-
-    print(product.name)
-    print(product.id)
-    print(product.category)
-    print(product.name)
+    
+    
 
 
     return render(request, 'product.html',  {
