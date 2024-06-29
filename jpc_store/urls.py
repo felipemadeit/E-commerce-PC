@@ -28,7 +28,7 @@ urlpatterns = [
     path('components', views.components_view, name='components'),
     path('prebuilds', views.prebuilds_view, name='prebuilds'),
     path('laptops', views.laptops_view, name='laptops'),
-    path('login', views.login_view, name='login'),
+    path('login', views.CustomLoginView.as_view(),  name='login'),
     path('sign_up', views.sign_up_view, name='sign_up'),
     path('log_out', views.sign_out, name='logout'),
     path('product/<int:product_id>/', views.product_view, name='product'),
@@ -44,7 +44,8 @@ urlpatterns = [
     path('refrigeration', views.refrigeration_view, name='refrigeration'),
     path('monitors', views.monitor_view, name='monitor'),
     path('chairs', views.chair_view, name='chair'),
-    path('accessories', views.accesory_view, name='accessory')
+    path('accessories', views.accesory_view, name='accessory'),
+    path('shopping_cart', views.cart_view, name='cart')
     
 
 

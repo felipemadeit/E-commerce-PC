@@ -53,10 +53,16 @@
         <span>{{product.get_format_price}}</span>
     </div>
 
-    <div class="btn-add">
-        <h2>Add to cart</h2>
-        <img src="{% static 'media/icons-svg/shopping-cart.svg' %}" class="svg-cart">
-    </div>
+    {% if user.is_authenticated %}
+        <div class="btn-add">
+            <h2>Add to cart</h2>
+            <img src="{% static 'media/icons-svg/shopping-cart.svg' %}" class="svg-cart">
+        </div>
+    {% else %}
+        <div class="please-login">
+            <a href="{% url 'login' %}?next={{ request.path }}"><h2>Please Login</h2></a>
+        </div>  
+    {% endif %}
 
     <div class="modal-confirm">
         <div class="content-modal">

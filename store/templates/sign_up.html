@@ -9,7 +9,7 @@
         <div class="error-sign_up">
             {{error}}
         </div>
-        <form method='POST'>
+        <form method="POST" action="{% url 'sign_up' %}?next={{ request.GET.next }}">
             {% csrf_token %}
             <div class="label-username_login">
                 {{form.username.label_tag}}

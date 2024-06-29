@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    Shopping Cart
+{% endblock %}
+
+{% block body %}
+
+    <div class="text-cart">
+        <h2>Your Shopping Cart</h2>
+        <img src="{% static 'media/icons-svg/shopping.svg' %}">
+    </div>
+
+    <div class="container-added-products">
+        <div class="scroll-container">
+        </div>
+    </div>
+
+    <div class="summary-shop"></div>
+
+{% endblock %}

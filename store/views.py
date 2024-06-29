@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.forms import User
@@ -12,6 +13,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from django.db.models.functions import Random
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 
 
@@ -507,9 +509,19 @@ def sign_out (request):
     logout(request)
     return redirect('home')
 
+class CustomLoginView(LoginView):
+    
+    template_name = 'login.html'
+    
+    def get_success_url(self):
+        next_url = self.request.GET.get('next')
+        if next_url:
+            return next_url
+        return reverse_lazy('home')
+    
 
 
-@login_required
+
 def product_view(request, product_id):
 
     product = get_object_or_404(Product, id=product_id)
@@ -522,3 +534,7 @@ def product_view(request, product_id):
     })
 
 
+
+def cart_view (request):
+    
+    return render(request, 'cart.html')
