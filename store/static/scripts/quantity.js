@@ -68,16 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Div to confirm quantity
     const quantityPlaceholder = document.querySelectorAll('.quantity-placeholder');
     const notificationSuccess = document.querySelector('.notification-success');
+    const addToCartForm = document.querySelector('#addToCartForm');
+    const unitPrice = document.querySelector('.total-price').textContent;
+
+    if (!buttonAdd || !buttonConfirm || !buttonCancel || !modalConfirm || !quantityInput || !unitPrice) {
+        return; // Exit if any element is not found
+    }
+
     
 
     function formatPrice (amount) {
         return amount.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
 
     } 
-
-    const unitPrice = document.querySelector('.total-price').textContent;
-
-
+    
     function addCart () {
         const totalPrice = unitPrice * parseFloat(quantityInput.value);
         const formatedPrice = formatPrice(totalPrice);
@@ -101,17 +105,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     buttonConfirm.addEventListener("click", function() {
+        
+        const formData = new FormData(addToCartForm);
+        const url = addToCartForm.getAttribute('action');
 
-        notificationSuccess.classList.add('visible');
-        modalConfirm.style.display = 'none';
+        fetch(url, {
+            method: 'POST',
+            headers:     {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: formData,
+        })
 
-        setTimeout(function(){
-            notificationSuccess.classList.remove('visible')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                notificationSuccess.classList.add('visible');
+                modalConfirm.style.display = 'none';
+
+                setTimeout(function() {
+                    notificationSuccess.classList.remove('visible');
+                }, 2500);
 
 
-       }, 2500)
-    })
-
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
 });
 
 

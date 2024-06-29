@@ -1,3 +1,5 @@
+import json
+from pyexpat.errors import messages
 from django.shortcuts import render
 
 # Create your views here.
@@ -10,7 +12,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.db.models.functions import Random
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -524,17 +526,55 @@ class CustomLoginView(LoginView):
 
 def product_view(request, product_id):
 
+
     product = get_object_or_404(Product, id=product_id)
     
     
-
-
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        if quantity <=0:
+            quantity = 1
+            
+            
+        cartItem, created = Cart.objects.get_or_create(user = request.user, product = product, defaults={'quantity': quantity} )
+        
+        if not created:
+            cartItem.quantity += quantity
+            cartItem.save()
+        else:
+            cartItem.quantity = quantity
+            cartItem.save()
+            
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'success': True})
+        
+    
+    
     return render(request, 'product.html',  {
         'product': product
     })
 
 
 
-def cart_view (request):
-    
-    return render(request, 'cart.html')
+def cart_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        item_id = data.get('item_id')
+        quantity = data.get('quantity')
+        if item_id and quantity:
+            try:
+                cart_item = Cart.objects.get(id=item_id, user=request.user)
+                cart_item.quantity = int(quantity)
+                cart_item.save()
+                return JsonResponse({'success': True})
+            except Cart.DoesNotExist:
+                return JsonResponse({'success': False, 'error': 'Item not found'})
+        else:
+            return JsonResponse({'success': False, 'error': 'Invalid data'})
+    else:
+        cart_items = Cart.objects.filter(user=request.user)
+        quantity_range = range(1, 16) 
+        return render(request, 'cart.html', {
+            'cart': cart_items,
+            'quantity_range': quantity_range
+        })

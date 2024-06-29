@@ -42,11 +42,7 @@
         <p>{{product.description}}</p>
     </div>
 
-    <div class="quantity-selector">
-        <button id="decrement">-</button>
-        <input type="number" id="quantity" value="1" min="1" max="15">
-        <button id="increment">+</button>
-    </div>
+    
 
 
     <div class="price-product">
@@ -54,10 +50,18 @@
     </div>
 
     {% if user.is_authenticated %}
-        <div class="btn-add">
+    <form method = "POST" action = "{% url 'product' product.id %}" id="addToCartForm">
+        {% csrf_token %}
+        <div class="quantity-selector">
+            <button type="button" id="decrement">-</button>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="15">
+            <button type ="button" id="increment">+</button>
+        </div>
+        <button type="button" class="btn-add">
             <h2>Add to cart</h2>
             <img src="{% static 'media/icons-svg/shopping-cart.svg' %}" class="svg-cart">
-        </div>
+        </button>
+    </form>
     {% else %}
         <div class="please-login">
             <a href="{% url 'login' %}?next={{ request.path }}"><h2>Please Login</h2></a>

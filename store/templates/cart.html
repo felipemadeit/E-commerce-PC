@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body %}
-
     <div class="text-cart">
         <h2>Your Shopping Cart</h2>
         <img src="{% static 'media/icons-svg/shopping.svg' %}">
@@ -15,9 +14,34 @@
 
     <div class="container-added-products">
         <div class="scroll-container">
+            {% for item in cart %}
+                <div class="cart-item">
+                    <div class="mini-img">
+                        <img src="{{ item.product.primary_img.url }}" alt="{{ item.product.name }}">
+                    </div>
+                    <h2>{{ item.product.name }}</h2>
+                    <select class="quantity-sec" name="quantity" id="quantity-{{ item.id }}" onchange="updateQuantity({{ item.id }}, this.value, {{ item.product.price }})">
+                        {% for i in quantity_range %}
+                            <option value="{{ i }}" {% if i == item.quantity %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <p class="total-p" id="total-price-{{ item.id }}">{{ item.get_total_price|floatformat:0|add:" $" }}</p>
+                </div>
+            {% endfor %}
         </div>
     </div>
+    
 
-    <div class="summary-shop"></div>
+    <div class="summary-shop">
+        <h3 class="h3-total">Summary</h3>
+        <p class="grand-total" id="grand-total"></p>
+¿    </div>
+{% endblock %}
 
+{% block script %}
+<script>
+    const cartUrl = "{% url 'cart' %}";
+    const csrfToken = "{{ csrf_token }}";
+</script>
+<script src="{% static 'scripts/cart.js' %}"></script>
 {% endblock %}
