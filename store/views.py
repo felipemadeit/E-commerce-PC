@@ -12,7 +12,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import Http404, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.db.models.functions import Random
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -24,8 +24,12 @@ import openai
 
 OPENAI_API_KEY = settings.OPENAI_API_KEY
 
+
 # Home view
 def home_view (request):
+    
+   
+        
 
     # SQL Query for the Processors
     processors= Product.objects.filter(category = 1)
