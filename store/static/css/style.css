@@ -1779,7 +1779,7 @@ input[type="password"] {
 .summary-shop {
     display: flex;
     width: 350px;
-    height: 500px;
+    height: 300px;
     box-sizing: border-box;
     padding: 30px;
     margin-top: 60px;
@@ -1787,6 +1787,25 @@ input[type="password"] {
     border: 1px solid white;
 }
 #grand-total {
+    position: absolute;
+    margin-top: 80px;
+    font-size: 30px;
+    color: white;
+    
+}
+
+.total-line {
+    position: absolute;
+    width: 290px;
+    height: 2px;
+    margin-top: 50px;
+    background-color: white;
+}
+
+.total-items {
+    position: absolute;
+    margin-top: 130px;
+    font-size: 25px;
     color: white;
 }
 
@@ -1806,6 +1825,40 @@ input[type="password"] {
     color: white;
 }
 
+.btn-pay {
+    position: absolute;
+    margin-top: 200px;
+    width: 290px;
+    height: 45px;
+    background-color: #0c1821;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s; 
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.btn-pay:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(255, 255, 255, 0.5); 
+}
+
+.btn-pay:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.5); 
+}
+
+.pay-methods {
+    display: flex;
+    position: absolute;
+    width: 350px;
+    height: 180px;
+    box-sizing: border-box;
+    padding: 30px;
+    margin-top: 20px;
+    margin-left: 970px;
+    border: 1px solid white;
+}
 
 .text-cart {
     display: flex;
