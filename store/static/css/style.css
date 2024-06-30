@@ -1070,8 +1070,20 @@ input[type="password"] {
     align-items: center;
     vertical-align: middle;
     gap: 5px;
-    padding: 1px 14px;
+    padding: 1px 20px;
     box-sizing: border-box;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;  
+}
+
+.btn-add:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(255, 255, 255, 0.5); 
+}
+
+.btn-add:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.5); 
 }
 
 .please-login {
@@ -1701,6 +1713,14 @@ input[type="password"] {
     font-size: 20px;
 }
 
+.container-cart {
+    position: relative;
+    top: -50px;
+    left: 5px;
+    font-size: 30px;
+    color: white;
+}
+
 .text-cart {
     position: relative;
     top: -50px;
@@ -1860,14 +1880,17 @@ input[type="password"] {
     border: 1px solid white;
 }
 
-.text-cart {
+.text-cart-modal {
     display: flex;
-    width: 900px;
+    position: relative;
+    width: 300px;
     height: 100px;
-    top: 40px;
-    left: 50px;
+    top: -60px;
+    left:85px;
     box-sizing: border-box;
+
     padding: 10px 20px;
+    color: white;
 }
     
 .cart-item {
