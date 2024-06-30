@@ -16,9 +16,13 @@ from django.http import Http404, JsonResponse
 from django.db.models.functions import Random
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+import openai
 
 
 
+OPENAI_API_KEY = settings.OPENAI_API_KEY
 
 # Home view
 def home_view (request):

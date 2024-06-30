@@ -9,7 +9,6 @@ if (container && arrowPrev && arrowNext) {
     let scrollLeft;
 
     arrowPrev.addEventListener("click", function() {
-        console.log("hola")
         container.scrollBy({
             left: -250,
             behavior: "smooth"
@@ -62,13 +61,13 @@ if (prevButtonProcessors && nextButtonProcessors && cardsContainerProcessors) {
     // Eventos para botones de navegación de procesadores
     prevButtonProcessors.addEventListener("click", function() {
         cardsContainerProcessors.scrollBy({
-            left: -247,
+            left: -244,
             behavior: "smooth"
         });
     });
     nextButtonProcessors.addEventListener("click", function() {
         cardsContainerProcessors.scrollBy({
-            left: 247,
+            left: 244,
             behavior: "smooth"
         });
     });
@@ -107,13 +106,13 @@ const cardsContainerGraphics = document.querySelector(".show_products.graphics .
 if (prevButtonGraphics && nextButtonGraphics && cardsContainerGraphics) {
     prevButtonGraphics.addEventListener("click", function() {
         cardsContainerGraphics.scrollBy({
-            left: -247,
+            left: -244,
             behavior: "smooth"
         });
     });
     nextButtonGraphics.addEventListener("click", function() {
         cardsContainerGraphics.scrollBy({
-            left: 247,
+            left: 244,
             behavior: "smooth"
         });
     });
@@ -131,14 +130,14 @@ if (prevButtonLaptops && nextButtonLaptops && cardsContainerLaptops) {
     // Eventos para botones de navegación de gráficos
     prevButtonLaptops.addEventListener("click", function() {
         cardsContainerLaptops.scrollBy({
-            left: -247,
+            left: -244,
             behavior: "smooth"
         });
     });
 
     nextButtonLaptops.addEventListener("click", function() {
         cardsContainerLaptops.scrollBy({
-            left: 247,
+            left: 244,
             behavior: "smooth"
         });
 });
@@ -154,14 +153,14 @@ const cardsContainerKeyboards = document.querySelector(".show_products.keyboards
 if (prevButtonKeyboards && nextButtonKeyboards && cardsContainerKeyboards) {
     prevButtonKeyboards.addEventListener("click", function() {
         cardsContainerKeyboards.scrollBy({
-            left: -247,
+            left: -244,
             behavior: "smooth"
         });
     });
     
     nextButtonKeyboards.addEventListener("click", function() {
         cardsContainerKeyboards.scrollBy({
-            left: 247,
+            left: 244,
             behavior: "smooth"
         });
         }
