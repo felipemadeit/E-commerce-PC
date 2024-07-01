@@ -211,9 +211,38 @@
             <img class="close-img" src="{% static 'media/icons-svg/arrows-minimize.svg' %}" alt="close-svg"> 
             <span></span>
         </div>
+        <div class="chat-content">
+            <ul>
 
-        <input type="text" class="chat-input" placeholder="Write something...">
+                <li class="message bot">
+                    <span>PC Guru</span>
+                    <span>Message of the bot</span>
+                </li>
+
+
+                <li class="message user">
+                    <span>You</span>
+                    <span>Long text to verify if all is ok</span>
+                </li>
+            </ul>
+        </div>
+
+        <form>
+            <input type="text" placeholder="Write Something....">
+            <button>Send</button>
+        </form>
+
+
+        <template id="message-template">
+            <li class="message">
+                <span></span>
+                <span></span>
+            </li>
+        </template>
+
+        
     </div>
+
 {% endblock %}
 
 {% block script %}
