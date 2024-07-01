@@ -204,7 +204,15 @@
     </div>
     
     <div class="windowBot">
-        <div class="top-bar"></div>
+        <div class="top-bar">
+            <img class="message-img" src="{% static 'media/icons-svg/message.svg' %}">
+            <span class="span-name">PC Guru</span>
+            <img class="online-img" src="{% static 'media/icons-svg/point.svg' %}">
+            <img class="close-img" src="{% static 'media/icons-svg/arrows-minimize.svg' %}" alt="close-svg"> 
+            <span></span>
+        </div>
+
+        <input type="text" class="chat-input" placeholder="Write something...">
     </div>
 {% endblock %}
 
