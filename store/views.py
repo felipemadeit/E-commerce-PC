@@ -33,7 +33,7 @@ def home_view (request):
 
     """
     client = OpenAI (
-        api_key = 'sk-proj-fQX9T29LRhpBz7kWewRcT3BlbkFJ3Z7eQTICg6lz3T0wnb7S'
+
     )
     """
     
