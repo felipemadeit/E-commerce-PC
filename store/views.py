@@ -28,71 +28,51 @@ load_dotenv()
 cohere_key = os.getenv("COHERE_KEY")
 
 
-# Home view
-def home_view (request):               
 
-    """
-    client = OpenAI (
+def home_view(request):
 
-    )
-    """
+    if not cohere_key:
+        return JsonResponse({'error': 'Cohere API key is not set'}, status=500)
     
-    
-    
-    co = cohere.Client(cohere_key)
-    
-    # SQL Query for the Processors
-    processors= Product.objects.filter(category = 1)
+    co = cohere.Client('n0S6QmnLWakgPT0MvgFqUBUKMJpAdlxvVq2F7tzq')
 
-    # SQL Query for the Graphics cards
-    cards = Product.objects.filter(category = 2)
+    processors = Product.objects.filter(category=1)
+    cards = Product.objects.filter(category=2)
+    laptops = Product.objects.filter(category=5)
+    keyboards = Product.objects.filter(category=4)
 
-    # SQL Query for the Laptops
-    laptops = Product.objects.filter(category = 5)
+    prompt_base = 'Eres un experto en computadores, tu nombre es pc guru'
+    if 'chat_messages' not in request.session:
+        request.session['chat_messages'] = []
 
-    #SQL Query for the Keyboards
-    keyboards = Product.objects.filter(category = 4)
-
-    """
-    chatbot_response = None
-    
-    message = request.POST.get('user_input')
-    chat_completion = client.chat.completions.create(
-    messages=[
-        {
-            "role": "user",
-            "content": message,
-        }
-    ],
-    model="gpt-3.5-turbo",
-    max_tokens=100
-)
-    """
-    chatbot_response = None
+    chat_messages = request.session['chat_messages']
 
     if request.method == 'POST':
-        input_message = request.POST.get('user_input')
-        if input_message:
-            # Enviar mensaje a la API de Cohere
-            response = co.chat(
-                message=input_message,
-                max_tokens=50,
-                max_input_tokens=50,
-                
-            )
-
-
-            # Imprimir la respuesta para depuración
-            print(response.text)
+        user_message = request.POST.get('user_input')
+        if user_message:
+            chat_messages.append({'sender': 'user', 'text': user_message})
+            try:
+                response = co.chat(
+                    preamble="PC Guru, para JPC, un ecommerce de componentes de PC de gama media-alta, eres el bot encargado de ayudar a los usuarios que visitan la página. Tu función es proporcionar recomendaciones personalizadas, responder preguntas técnicas sobre hardware y facilitar el proceso de compra. Estás diseñado para mejorar la experiencia del usuario ofreciendo conocimientos especializados y asistencia práctica en la selección de productos tecnológicos.",
+                    message=user_message,
+                    
+                )
+                chat_messages.append({'sender': 'bot', 'text': response.text})
+            except:
+                chat_messages.append({'sender': 'bot', 'text': 'In this moment i am not online'})
             
+            request.session['chat_messages'] = chat_messages
+            
+            return JsonResponse({'chat_messages': chat_messages})
+
     return render(request, 'home.html', {
         'processors': processors,
         'cards': cards,
         'laptops': laptops,
-        'keyboards': keyboards
+        'keyboards': keyboards,
+        'chat_messages': chat_messages,
     })
 
-    
 
 def components_view (request):
 

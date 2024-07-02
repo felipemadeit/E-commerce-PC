@@ -209,31 +209,27 @@
             <span class="span-name">PC Guru</span>
             <img class="online-img" src="{% static 'media/icons-svg/point.svg' %}">
             <img class="close-img" src="{% static 'media/icons-svg/arrows-minimize.svg' %}" alt="close-svg"> 
-            <span></span>
         </div>
-        <div class="chat-content">
+        
+        <div class="chat-content" id="chat-content">
+            {% for message in chat_messages %}
+                <div class="message {{ message.sender }}">
+                    {{ message.text }}
+                </div>
+            {% endfor %}
         </div>
-
-        <form method="POST" class="form-user">
+    
+        <form id="chat-form" method="POST" class="form-user">
             {% csrf_token %}
-            <input type="text" name="user_input" placeholder="Write Something....">
+            <input type="text" id="user_input" name="user_input" placeholder="Write Something....">
             <button type="submit" class="btn-message">Send</button>
         </form>
-
-
-        <template id="message-template">
-            <li class="message">
-                <span></span>
-                <span></span>
-            </li>
-        </template>
-
-        
     </div>
 
 {% endblock %}
 
 {% block script %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'scripts/horizontalScroll.js' %}"></script>
     <script src="{% static 'scripts/windowBot.js' %}"></script>
 {% endblock %}
