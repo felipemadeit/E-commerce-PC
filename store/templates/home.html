@@ -212,24 +212,12 @@
             <span></span>
         </div>
         <div class="chat-content">
-            <ul>
-
-                <li class="message bot">
-                    <span>PC Guru</span>
-                    <span>Message of the bot</span>
-                </li>
-
-
-                <li class="message user">
-                    <span>You</span>
-                    <span>Long text to verify if all is ok</span>
-                </li>
-            </ul>
         </div>
 
-        <form>
-            <input type="text" placeholder="Write Something....">
-            <button>Send</button>
+        <form method="POST" class="form-user">
+            {% csrf_token %}
+            <input type="text" name="user_input" placeholder="Write Something....">
+            <button type="submit" class="btn-message">Send</button>
         </form>
 
 

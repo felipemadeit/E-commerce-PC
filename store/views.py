@@ -18,19 +18,29 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-import openai
+import openai, os
+from openai import OpenAI
+from dotenv import load_dotenv
+import cohere
+load_dotenv()
 
 
-
-OPENAI_API_KEY = settings.OPENAI_API_KEY
+cohere_key = os.getenv("COHERE_KEY")
 
 
 # Home view
-def home_view (request):
-    
-   
-        
+def home_view (request):               
 
+    """
+    client = OpenAI (
+        api_key = 'sk-proj-fQX9T29LRhpBz7kWewRcT3BlbkFJ3Z7eQTICg6lz3T0wnb7S'
+    )
+    """
+    
+    
+    
+    co = cohere.Client(cohere_key)
+    
     # SQL Query for the Processors
     processors= Product.objects.filter(category = 1)
 
@@ -43,8 +53,38 @@ def home_view (request):
     #SQL Query for the Keyboards
     keyboards = Product.objects.filter(category = 4)
 
+    """
+    chatbot_response = None
     
+    message = request.POST.get('user_input')
+    chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": message,
+        }
+    ],
+    model="gpt-3.5-turbo",
+    max_tokens=100
+)
+    """
+    chatbot_response = None
 
+    if request.method == 'POST':
+        input_message = request.POST.get('user_input')
+        if input_message:
+            # Enviar mensaje a la API de Cohere
+            response = co.chat(
+                message=input_message,
+                max_tokens=50,
+                max_input_tokens=50,
+                
+            )
+
+
+            # Imprimir la respuesta para depuración
+            print(response.text)
+            
     return render(request, 'home.html', {
         'processors': processors,
         'cards': cards,
